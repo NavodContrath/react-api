@@ -38,17 +38,17 @@ function App() {
         </nav>
       </header >
       <main>
-        <section className='infos'>
-          <div className="container">
-            <h1>Dolci italiani</h1>
-            <div className="desription">
+        <section className='infos bg-light '>
+          <div className="container py-5">
+            <h1 className='mb-5'>Dolci italiani</h1>
+            <div className="desription mb-5">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, officiis saepe. Delectus velit, eum error et eos ex excepturi dolor tempora? Cumque sapiente dolore nesciunt aliquid fugit temporibus sed itaque!
             </div>
             <button className='btn btn-primary'>Explore Now!</button>
           </div>
         </section>
-        <section className="posts-container">
-          <table>
+        <section className="posts-container container">
+          <table className='table table-dark my-5'>
             <thead>
               <tr>
                 <th>Nome</th>
