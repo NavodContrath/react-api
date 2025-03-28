@@ -16,6 +16,9 @@ function App() {
         message: error.message
       }))
   }
+  function removePost() {
+
+  }
 
   useEffect(() => {
     fetchData()
@@ -48,8 +51,11 @@ function App() {
           </div>
         </section>
         <section className="posts-container container">
-          <div className='text-end'>
-            <button name="posts-remover" id="posts-remover" class="btn btn-primary mt-5 mb-3">Remove!</button>
+          <div className='d-flex justify-content-end'>
+            <form className='d-flex  align-items-center mt-5 mb-3'>
+              <input type="text" name="post-to-remove" id="post-to-remove" className='btn border'></input>
+              <button name="posts-remover" id="posts-remover" className="btn btn-primary">Remove!</button>
+            </form>
           </div>
           <table className='table table-dark'>
             <thead>
