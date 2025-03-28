@@ -37,6 +37,18 @@ function App() {
           </div>
         </nav>
       </header >
+      <main>
+        <section className='infos'>
+          <div className="container">
+            <h1>Dolci italiani</h1>
+            <div className="desription">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, officiis saepe. Delectus velit, eum error et eos ex excepturi dolor tempora? Cumque sapiente dolore nesciunt aliquid fugit temporibus sed itaque!
+            </div>
+            <button className='btn btn-primary'>Explore Now!</button>
+          </div>
+        </section>
+      </main>
+
     </>
   )
 }
