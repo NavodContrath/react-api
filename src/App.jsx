@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 function App() {
   const [getPosts, setGetPosts] = useState([])
   const [postToRemove, setPostToremove] = useState('')
+  const [removed, setRemoved] = useState(false)
 
 
   function fetchData() {
@@ -22,8 +23,10 @@ function App() {
     fetch(`http://localhost:3000/posts/${postToRemove}`, {
       method: "DELETE",
     })
-      .then(response => response.json())
-      .then(data => { console.log(data) })
+      .then(data => {
+        console.log(data)
+        setRemoved(true)
+      })
       .catch(error => console.log({
         error: "error",
         message: error.message
@@ -33,7 +36,7 @@ function App() {
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [removed])
 
   console.log(getPosts)
 
