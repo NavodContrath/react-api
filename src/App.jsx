@@ -25,8 +25,18 @@ function App() {
 
   return (
     <>
-
-
+      <header>
+        <nav className="navbar navbar-expand-sm navbar-light bg-primary py-3">
+          <div className="container-fluid">
+            <a className="navbar-brand  text-white" href="#">Logo</a>
+            <div className="collapse navbar-collapse" id="navbarID">
+              <div className="navbar-nav">
+                <a className="nav-link active  text-white" aria-current="page" href="#">Home</a>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header >
     </>
   )
 }
