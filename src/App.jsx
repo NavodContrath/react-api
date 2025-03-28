@@ -47,6 +47,31 @@ function App() {
             <button className='btn btn-primary'>Explore Now!</button>
           </div>
         </section>
+        <section className="posts-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Immagine</th>
+                <th>Descrizione</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                getPosts.map(post => (
+                  <tr key={`post-${post.slug}`}>
+                    <td>{post.title}</td>
+                    <td><img src={`http://localhost:3000/images/${post.image}`} alt="" width={"300px"} /></td>
+                    <td>{post.content}</td>
+                  </tr>
+
+                ))
+              }
+            </tbody>
+          </table>
+
+        </section>
+
       </main>
 
     </>
