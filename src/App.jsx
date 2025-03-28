@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
 
-
 function App() {
   const [getPosts, setGetPosts] = useState([])
-  const [postToRemove, setPostToremove] = useState('')
+  /*  const [postToRemove, setPostToremove] = useState('')*/
   const [removed, setRemoved] = useState(false)
-
 
   function fetchData() {
     fetch('http://localhost:3000/posts')
@@ -18,28 +16,26 @@ function App() {
         message: error.message
       }))
   }
-  function removePost(e) {
-    e.preventDefault()
-    fetch(`http://localhost:3000/posts/${postToRemove}`, {
+
+  function removePost(slug) {
+    fetch(`http://localhost:3000/posts/${slug}`, {
       method: "DELETE",
     })
       .then(data => {
         console.log(data)
+        console.log(slug)
         setRemoved(true)
       })
       .catch(error => console.log({
         error: "error",
         message: error.message
       }))
-
   }
 
   useEffect(() => {
     fetchData()
+    setRemoved(false)
   }, [removed])
-
-  console.log(getPosts)
-
 
   return (
     <>
@@ -67,10 +63,14 @@ function App() {
         </section>
         <section className="posts-container container">
           <div className='d-flex justify-content-end'>
-            <form className='d-flex  align-items-center mt-5 mb-3' onSubmit={(e) => { removePost(e) }}>
+            {/*  
+           !!!implementation based on typing the slug not functionally  fixed down below!!!
+
+           <form className='d-flex  align-items-center mt-5 mb-3' onSubmit={(e) => { removePost(e) }}>
               <input type="text" name="post-to-remove" id="post-to-remove" onChange={(e) => setPostToremove(e.target.value)} className='btn border'></input>
               <button name="posts-remover" id="posts-remover" className="btn btn-primary">Remove</button>
-            </form>
+            </form> 
+            */}
           </div>
           <table className='table table-dark'>
             <thead>
@@ -78,6 +78,7 @@ function App() {
                 <th>Nome</th>
                 <th>Immagine</th>
                 <th>Descrizione</th>
+                <th>Deleter</th>
               </tr>
             </thead>
             <tbody>
@@ -87,17 +88,15 @@ function App() {
                     <td>{post.title}</td>
                     <td><img src={`http://localhost:3000/images/${post.image}`} alt="" width={"300px"} /></td>
                     <td>{post.content}</td>
+                    <td className='align-middle'><button type="button" onClick={() => { removePost(post.slug) }} className="btn btn-primary">Delete</button></td>
                   </tr>
 
                 ))
               }
             </tbody>
           </table>
-
         </section>
-
       </main>
-
     </>
   )
 }
