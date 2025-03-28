@@ -48,7 +48,10 @@ function App() {
           </div>
         </section>
         <section className="posts-container container">
-          <table className='table table-dark my-5'>
+          <div className='text-end'>
+            <button name="posts-remover" id="posts-remover" class="btn btn-primary mt-5 mb-3">Remove!</button>
+          </div>
+          <table className='table table-dark'>
             <thead>
               <tr>
                 <th>Nome</th>
