@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 
 function App() {
   const [getPosts, setGetPosts] = useState([])
+  const [postToRemove, setPostToremove] = useState('')
 
 
   function fetchData() {
@@ -16,7 +17,17 @@ function App() {
         message: error.message
       }))
   }
-  function removePost() {
+  function removePost(e) {
+    e.preventDefault()
+    fetch(`http://localhost:3000/posts/${postToRemove}`, {
+      method: "DELETE",
+    })
+      .then(response => response.json())
+      .then(data => { console.log(data) })
+      .catch(error => console.log({
+        error: "error",
+        message: error.message
+      }))
 
   }
 
@@ -25,6 +36,7 @@ function App() {
   }, [])
 
   console.log(getPosts)
+
 
   return (
     <>
@@ -52,9 +64,9 @@ function App() {
         </section>
         <section className="posts-container container">
           <div className='d-flex justify-content-end'>
-            <form className='d-flex  align-items-center mt-5 mb-3'>
-              <input type="text" name="post-to-remove" id="post-to-remove" className='btn border'></input>
-              <button name="posts-remover" id="posts-remover" className="btn btn-primary">Remove!</button>
+            <form className='d-flex  align-items-center mt-5 mb-3' onSubmit={(e) => { removePost(e) }}>
+              <input type="text" name="post-to-remove" id="post-to-remove" onChange={(e) => setPostToremove(e.target.value)} className='btn border'></input>
+              <button name="posts-remover" id="posts-remover" className="btn btn-primary">Remove</button>
             </form>
           </div>
           <table className='table table-dark'>
