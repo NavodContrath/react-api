@@ -72,23 +72,23 @@ function App() {
             </form> 
             */}
           </div>
-          <table className='table table-dark'>
+          <table className='table table-striped table-dark'>
             <thead>
-              <tr>
+              <tr className='text-center'>
                 <th>Nome</th>
                 <th>Immagine</th>
                 <th>Descrizione</th>
-                <th>Deleter</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
               {
                 getPosts.map(post => (
                   <tr key={`post-${post.slug}`}>
-                    <td>{post.title}</td>
-                    <td><img src={`http://localhost:3000/images/${post.image}`} alt="" width={"300px"} /></td>
-                    <td>{post.content}</td>
-                    <td className='align-middle'><button type="button" onClick={() => { removePost(post.slug) }} className="btn btn-primary">Delete</button></td>
+                    <td className='align-middle p-3'>{post.title}</td>
+                    <td className='p-3'><img src={`http://localhost:3000/images/${post.image}`} alt="" width={"300px"} /></td>
+                    <td className='p-3 border border-bottom-0 border-top-0'>{post.content}</td>
+                    <td className='align-middle p-3'><button type="button" onClick={() => { removePost(post.slug) }} className="btn btn-primary">Delete</button></td>
                   </tr>
 
                 ))
